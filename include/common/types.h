@@ -29,6 +29,7 @@ struct InferenceConfig {
     ModelType modelType;
     bool parallelExecution;
     int topK;
+    QString dataPath;
 };
 
 struct TopKResult {
