@@ -1,0 +1,11 @@
+{ 
+"version": 3, 
+"configurePresets": [ { 
+    "name": "debug", 
+    "binaryDir": "./build/debug", 
+    "cacheVariables": { 
+        "CMAKE_TOOLCHAIN_FILE":"$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "CMAKE_PREFIX_PATH": "/Users/nandhish/Qt/6.10.1/macos;$env{VCPKG_ROOT}/installed/arm64-osx"
+ } 
+} ] 
+}

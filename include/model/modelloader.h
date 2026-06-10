@@ -2,7 +2,7 @@
 
 #include "types.h"
 #include <expected>
-#include <onnxruntime_cxx_api.h>
+#include <onnxruntime/onnxruntime_cxx_api.h>
 
 class ModelLoader{
 
