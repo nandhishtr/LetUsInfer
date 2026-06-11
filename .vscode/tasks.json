@@ -1,0 +1,44 @@
+
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "build current project with build script",
+            "command": "./build.sh",
+            "args": [
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Task for VSCode to run build.sh"
+        },
+                {
+            "type": "shell",
+            "label": "clean build current project with build script",
+            "command": "./build.sh",
+            "args": [
+                "-c"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Task for VSCode to run clean build"
+        }
+    ],
+    "version": "2.0.0"
+}
+
