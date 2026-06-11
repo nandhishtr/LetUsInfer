@@ -15,7 +15,9 @@ enum class ErrorCode {
     PRE_PROCESS_FAILED,
     MEMORY_LIMIT_HIT,
     DATA_LOADER_FAIL,
-    MODEL_LOADER_FAIL
+    MODEL_LOADER_FAIL,
+    DIRECTORY_NOT_FOUND,
+    IMAGE_READ_FAILED
 };
 
 enum class ModelType {

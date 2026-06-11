@@ -1,6 +1,7 @@
 #pragma once
 
 #include "types.h"
+#include <expected>
 
 class DataLoader {
     std::string m_dataPath{};
@@ -8,7 +9,6 @@ class DataLoader {
 
 public:
     void setDataPath(std::string_view path);
-    std::string_view getDataPath();
-    InputData loadData();
-
+    std::string_view getDataPath() const;
+    std::expected<InputData, ErrorCode> loadData();
 };
