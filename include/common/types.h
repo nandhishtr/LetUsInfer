@@ -32,6 +32,9 @@ struct InferenceConfig {
     bool parallelExecution;
     int topK;
     QString dataPath;
+    float normalizedMean[3];
+    float normalizedStd[3];
+    std::pair<int, int> inputDimensions;
 };
 
 struct TopKResult {
