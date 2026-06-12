@@ -17,7 +17,10 @@ enum class ErrorCode {
     DATA_LOADER_FAIL,
     MODEL_LOADER_FAIL,
     DIRECTORY_NOT_FOUND,
-    IMAGE_READ_FAILED
+    IMAGE_READ_FAILED, 
+    LABELS_NOT_FOUND,
+    LABELS_ACCESS_ISSUE,
+    FORWARD_PASS_FAILED
 };
 
 enum class ModelType {
@@ -35,10 +38,11 @@ struct InferenceConfig {
     float normalizedMean[3];
     float normalizedStd[3];
     std::pair<int, int> inputDimensions;
+    QString labelPath;
 };
 
 struct TopKResult {
-    QString label;
+    std::string label;
     float confidenceScore;
     int rank;
     int classIndex;

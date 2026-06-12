@@ -8,7 +8,12 @@
 class InferenceEngine{
 
     public:
-        std::expected<OutputData,ErrorCode> forwardPass(const std::vector<float>& data, const Ort::Session& model);
+        InferenceEngine(std::string_view labelPath);
+        std::expected<OutputData,ErrorCode> forwardPass(std::vector<float>& data, 
+                            Ort::Session& model, const InferenceConfig& config);
+    private:
+        std::expected<void, ErrorCode> loadLabels(std::string_view labelPath);
+        std::vector<std::string> m_classLabels;
 };
 
 #endif
