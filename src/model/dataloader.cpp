@@ -3,6 +3,10 @@
 
 namespace fs = std::filesystem;
 
+DataLoader::DataLoader(std::string_view dataPath): 
+    m_dataPath{dataPath} {
+}
+
 void DataLoader::setDataPath(std::string_view path) {
     if (path != m_dataPath) {
         m_dataPath = path;

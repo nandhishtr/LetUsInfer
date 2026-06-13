@@ -8,8 +8,7 @@
 #include "inferenceengine.h"
 
 class InferenceService {
-
-
+    
     public:
         InferenceService(const InferenceConfig& config);
         std::expected<OutputData, ErrorCode> runInference();
@@ -19,6 +18,7 @@ class InferenceService {
         std::unique_ptr<PreProcessor> m_preProcessor = nullptr;
         std::unique_ptr<ModelLoader> m_modelLoader = nullptr;
         std::unique_ptr<InferenceEngine> m_inferenceEngine = nullptr;
+        InferenceConfig m_currentConfig;
 };
 
 #endif

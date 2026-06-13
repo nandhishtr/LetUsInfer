@@ -30,15 +30,15 @@ enum class ModelType {
 };
 
 struct InferenceConfig {
-    QString modelPath;
+    std::string modelPath;
     ModelType modelType;
     bool parallelExecution;
     int topK;
-    QString dataPath;
+    std::string dataPath;
     float normalizedMean[3];
     float normalizedStd[3];
     std::pair<int, int> inputDimensions;
-    QString labelPath;
+    std::string labelPath;
 };
 
 struct TopKResult {

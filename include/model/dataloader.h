@@ -4,11 +4,14 @@
 #include <expected>
 
 class DataLoader {
-    std::string m_dataPath{};
-    InputData m_data;
 
 public:
+    DataLoader(std::string_view dataPath);
     void setDataPath(std::string_view path);
     std::string_view getDataPath() const;
     std::expected<InputData, ErrorCode> loadData();
+
+private:
+    std::string m_dataPath{};
+    InputData m_data;
 };
