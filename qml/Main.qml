@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 
 ApplicationWindow {
     width: 640
@@ -13,9 +14,18 @@ ApplicationWindow {
     palette.button:'#385d4b'
     palette.buttonText:'#254332'
     palette.placeholderText: '#254332'
-    InputView {
-        id: inputView
+    RowLayout {
         anchors.fill: parent
+        InputView {
+            id: inputView
+            // anchors.left: parent.left
+        }
+        OutputView {
+            id: outputView
+            // anchors.right: parent.right
+        }
     }
+
+
 
 }
