@@ -19,6 +19,9 @@ int main(int argc, char *argv[])
     InferenceConfig config;
     config.normalizedMean = {0.485f, 0.456f, 0.406f};
     config.normalizedStd = {0.229f, 0.224f, 0.225f};
+    config.labelPath = "/Users/nandhish/Studies/QtProjects/LetUsInfer/assets/labels/imagenet_classes.txt";
+    config.topK = 5;
+    config.inputDimensions = std::make_pair(224,224);
     std::unique_ptr<InferenceService> inferenceService = std::make_unique<InferenceService>(config);
     std::unique_ptr<InferenceViewModel> inferenceViewModel = std::make_unique<InferenceViewModel>(inferenceService.get());
 

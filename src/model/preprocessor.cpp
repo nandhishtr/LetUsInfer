@@ -32,7 +32,22 @@ std::vector<float> PreProcessor::flattenData(const InputData& data) {
 std::vector<float> PreProcessor::preprocess(InputData& data, const InferenceConfig& config) {
     int height = config.inputDimensions.first;
     int width = config.inputDimensions.second;
+    // Convert from BGR to RGB format as the model requires it
+    for (auto const& img : data.images) {
+        cv::cvtColor(img, img, cv::COLOR_BGR2RGB);
+    }
     resize(height, width, data);
     normalize(data, config);
-    return flattenData(data);
+    //TODO: refactor to remove redundant looping. 
+    //TODO: right now handling channel split and flatten for one image
+    std::vector<cv::Mat> splitDataVector;
+    for (auto const& img : data.images) {
+        cv::split(img, splitDataVector);
+    } 
+    std::vector<float> array;
+    for (auto const& channel : splitDataVector) {
+        array.insert(array.end(), (float*)channel.data, (float*)channel.data + channel.total()*channel.channels());
+    }
+    return array;
+    // return flattenData(splitDataVector);
 }

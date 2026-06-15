@@ -21,11 +21,15 @@ std::expected<InputData, ErrorCode> DataLoader::loadData() {
     InputData input;
     fs::path currentPath(m_dataPath);
     if (!fs::is_directory(currentPath)) {
+        std::cout << "Data directory not found" << std::endl;
         return std::unexpected(ErrorCode::DIRECTORY_NOT_FOUND);
     }
     for (auto const& img_entry : fs::directory_iterator{currentPath})
     {
         auto path = img_entry.path();
+        if (path.extension() != ".JPEG") {
+            continue;
+        }
         cv::Mat imgMatrix = cv::imread(path.string());
         // imgMatrix is returned empty when the file format is not supported, 
         // no need for additional format check

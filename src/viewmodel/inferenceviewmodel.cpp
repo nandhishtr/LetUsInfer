@@ -1,4 +1,5 @@
 #include "inferenceviewmodel.h"    
+#include <QUrl>
 
 InferenceViewModel::InferenceViewModel(InferenceService* inferenceService, 
         QObject* parent) {
@@ -6,13 +7,17 @@ InferenceViewModel::InferenceViewModel(InferenceService* inferenceService,
 }
 
 void InferenceViewModel::setDataPath(const QString path) {
-    m_inferenceService->setDataPath(path.toStdString());
+    //strip file:// which is Qt format for files at the front
+    auto localPath = QUrl(path).toLocalFile(); 
+    m_inferenceService->setDataPath(localPath.toStdString());
     std::cout << "setDataPath: "<< path.toStdString() << std::endl;
 
 }
 void InferenceViewModel::setModelPath(const QString path) {
-    m_inferenceService->setModelPath(path.toStdString());
-    std::cout << "setModelPath: " << path.toStdString() << std::endl;
+    //strip file:// which is Qt format for files at the front
+    auto localPath = QUrl(path).toLocalFile();
+    m_inferenceService->setModelPath(localPath.toStdString());
+    std::cout << "setModelPath: " << localPath.toStdString() << std::endl;
 
 }
 void InferenceViewModel::setTopK(const int k){

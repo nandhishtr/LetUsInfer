@@ -42,20 +42,21 @@ Item {
             // columnSpacing: 1
             // rowSpacing: 1
             clip: true
-            model: dummModel
+            model: dataModel
             delegate: Rectangle {
                 border.width: 0.5
                 border.color: '#324c32'
-                implicitWidth: 70
+                implicitWidth: 150
                 implicitHeight: 30
                 color: '#b6e1cd'
                 Label {
                     anchors.centerIn: parent
                     text: model.display
+                    font.bold:true
                 }
             }
             TableModel {
-                id: dummModel
+                id: dataModel
                 TableModelColumn { 
                     display: "Rank"
                 }
@@ -65,9 +66,15 @@ Item {
                 TableModelColumn { 
                     display: "Confidence"
                 }
-                rows: InferenceViewModel.tableModel
+                // rows: InferenceViewModel.tableModel
             }
-        }
 
+        }
+        Connections {
+                target: InferenceViewModel
+                    function onTableModelChanged() {
+                        dataModel.rows = JSON.parse(JSON.stringify(InferenceViewModel.tableModel))
+                    }
+                }
     }
 }

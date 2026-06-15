@@ -20,10 +20,13 @@ std::expected<Ort::Session, ErrorCode> ModelLoader::loadModel(){
         return std::unexpected(ErrorCode::MODEL_NOT_FOUND);
     }
     try{
+        setenv("ORT_DISABLE_ORT_OPERATOR_SCHEMA", "1", 1);
         static auto env = Ort::Env{OrtLoggingLevel::ORT_LOGGING_LEVEL_WARNING, "OnnxLetUsInfer"};
         auto sessionOptions = Ort::SessionOptions{};
+        sessionOptions.SetGraphOptimizationLevel(GraphOptimizationLevel::ORT_DISABLE_ALL);
         return  Ort::Session{env, m_modelPath.data(), sessionOptions};
     } catch (Ort::Exception& e) {
+        std::cout << "Model Loader failed: " << e.what() << std::endl;
         return std::unexpected(ErrorCode::MODEL_LOADER_FAIL);
     }
 }
