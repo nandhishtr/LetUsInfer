@@ -11,6 +11,8 @@ class InferenceEngine{
         InferenceEngine(std::string_view labelPath);
         std::expected<OutputData,ErrorCode> forwardPass(std::vector<float>& data, 
                             Ort::Session& model, const InferenceConfig& config);
+        std::vector<std::string> getClassLabels() const;
+        
     private:
         std::expected<void, ErrorCode> loadLabels(std::string_view labelPath);
         std::vector<std::string> m_classLabels;

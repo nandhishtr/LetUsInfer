@@ -35,8 +35,8 @@ struct InferenceConfig {
     bool parallelExecution;
     int topK;
     std::string dataPath;
-    float normalizedMean[3];
-    float normalizedStd[3];
+    std::array<float, 3> normalizedMean;
+    std::array<float, 3> normalizedStd;
     std::pair<int, int> inputDimensions;
     std::string labelPath;
 };

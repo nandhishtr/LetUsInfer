@@ -72,3 +72,7 @@ std::expected<void, ErrorCode> InferenceEngine::loadLabels(std::string_view labe
     }
     return {};
 }
+
+std::vector<std::string> InferenceEngine::getClassLabels() const {
+    return m_classLabels;
+}

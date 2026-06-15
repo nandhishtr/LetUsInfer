@@ -29,3 +29,26 @@ std::expected<OutputData, ErrorCode> InferenceService::runInference() {
     }
     return outputData;
 }
+
+void InferenceService::setDataPath(const std::string_view path) {
+    if (path != m_currentConfig.dataPath) {
+        m_currentConfig.dataPath = path;
+        m_dataLoader->setDataPath(m_currentConfig.dataPath);
+    }
+}
+void InferenceService::setModelPath(const std::string_view path) {
+    if (path != m_currentConfig.modelPath) {
+        m_currentConfig.modelPath = path;
+        m_modelLoader->setModelPath(m_currentConfig.modelPath);
+    }
+}
+void InferenceService::setTopK(const int& k) {
+    if (k != m_currentConfig.topK) {
+        m_currentConfig.topK = k;
+    }
+}
+
+std::string InferenceService::getClassLabelFromIndex(const int& index) {
+    return m_inferenceEngine->getClassLabels().at(index);
+}
+

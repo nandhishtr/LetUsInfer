@@ -49,6 +49,7 @@ Item {
             onAccepted: {
                 console.log("You chose: " + directoryPicker.selectedFolder)
                 dataPathPicker.text = directoryPicker.selectedFolder
+                InferenceViewModel.setDataPath(directoryPicker.selectedFolder)
             }
             onRejected: {
                 console.log("Cancelled")
@@ -72,6 +73,7 @@ Item {
             onAccepted: {
                 console.log("You chose: " + filePicker.selectedFile)
                 modelPicker.text = filePicker.selectedFile
+                InferenceViewModel.setModelPath(filePicker.selectedFile)
             }
             onRejected: {
                 console.log("Cancelled")
@@ -87,6 +89,9 @@ Item {
             from: 1
             to: 10
             value: 5
+            onValueModified: {
+                InferenceViewModel.setTopK(value)
+            }
         }
         Button {
             id: runInference
@@ -95,6 +100,9 @@ Item {
             font.pixelSize: 16
             Layout.preferredWidth: 200
             Layout.preferredHeight: 55
+            onClicked: {
+                InferenceViewModel.runInference()
+            }
         }
     }
 }

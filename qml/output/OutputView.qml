@@ -65,33 +65,7 @@ Item {
                 TableModelColumn { 
                     display: "Confidence"
                 }
-                rows: [
-                    {
-                        Rank: 1,
-                        Label: "Dog",
-                        Confidence: "95%"
-                    },
-                                        {
-                        Rank: 2,
-                        Label: "Cat",
-                        Confidence: "67%"
-                    },
-                                        {
-                        Rank: 3,
-                        Label: "Tiger",
-                        Confidence: "54%"
-                    },
-                                        {
-                        Rank: 4,
-                        Label: "Wolf",
-                        Confidence: "33%"
-                    },
-                                        {
-                        Rank: 5,
-                        Label: "Rat",
-                        Confidence: "15%"
-                    }
-                ]
+                rows: InferenceViewModel.tableModel
             }
         }
 

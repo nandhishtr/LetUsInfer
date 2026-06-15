@@ -12,6 +12,10 @@ class InferenceService {
     public:
         InferenceService(const InferenceConfig& config);
         std::expected<OutputData, ErrorCode> runInference();
+        void setDataPath(const std::string_view path);
+        void setModelPath(const std::string_view path);
+        void setTopK(const int& k);
+        std::string getClassLabelFromIndex(const int& index);
 
     private:
         std::unique_ptr<DataLoader> m_dataLoader = nullptr;
