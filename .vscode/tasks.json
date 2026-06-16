@@ -3,7 +3,7 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "build current project with build script",
+            "label": "Build Debug",
             "command": "./build.sh",
             "args": [
             ],
@@ -17,11 +17,11 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Task for VSCode to run build.sh"
+            "detail": "build current project with build script in debug mode"
         },
-                {
+        {
             "type": "shell",
-            "label": "clean build current project with build script",
+            "label": "Clean Build Debug",
             "command": "./build.sh",
             "args": [
                 "-c"
@@ -36,7 +36,46 @@
                 "kind": "build",
                 "isDefault": false
             },
-            "detail": "Task for VSCode to run clean build"
+            "detail": "clean build current project with build script in debug mode"
+        },
+        {
+            "type": "shell",
+            "label": "Build Release",
+            "command": "./build.sh",
+            "args": [
+                "--release"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "build current project with build script in release mode"
+        },
+        {
+            "type": "shell",
+            "label": "Clean Build Release",
+            "command": "./build.sh",
+            "args": [
+                "-c",
+                "--release"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "clean build current project with build script in release mode"
         }
     ],
     "version": "2.0.0"

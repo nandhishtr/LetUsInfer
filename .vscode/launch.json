@@ -5,14 +5,62 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Debug(build+run)",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/debug/LetUsInfer",
-            "name": "Run Program",
             "cwd": "${workspaceFolder}",
             "MIMode":"lldb",
             "miDebuggerPath":"/Users/nandhish/.vscode/extensions/ms-vscode.cpptools-1.32.2-darwin-arm64/debugAdapters/lldb-mi/bin/lldb-mi",
-            "preLaunchTask": "build current project with build script"
-        }
+            "preLaunchTask": "Build Debug"
+        },
+        {
+            "name": "Release(build+run)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/release/LetUsInfer",
+            "cwd": "${workspaceFolder}",
+            "MIMode":"lldb",
+            "miDebuggerPath":"/Users/nandhish/.vscode/extensions/ms-vscode.cpptools-1.32.2-darwin-arm64/debugAdapters/lldb-mi/bin/lldb-mi",
+            "preLaunchTask": "Build Release"
+        },
+        {
+            "name": "Debug(run only)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/debug/LetUsInfer",
+            "cwd": "${workspaceFolder}",
+            "MIMode":"lldb",
+            "miDebuggerPath":"/Users/nandhish/.vscode/extensions/ms-vscode.cpptools-1.32.2-darwin-arm64/debugAdapters/lldb-mi/bin/lldb-mi",
+        },
+        {
+            "name": "Release(run only)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/release/LetUsInfer",
+            "cwd": "${workspaceFolder}",
+            "MIMode":"lldb",
+            "miDebuggerPath":"/Users/nandhish/.vscode/extensions/ms-vscode.cpptools-1.32.2-darwin-arm64/debugAdapters/lldb-mi/bin/lldb-mi",
+        },
+        {
+            "name": "Debug(clean+build+run)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/debug/LetUsInfer",
+            "cwd": "${workspaceFolder}",
+            "MIMode":"lldb",
+            "miDebuggerPath":"/Users/nandhish/.vscode/extensions/ms-vscode.cpptools-1.32.2-darwin-arm64/debugAdapters/lldb-mi/bin/lldb-mi",
+            "preLaunchTask": "Clean Build Debug"
+        },
+        {
+            "name": "Release(clean+build+run)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/release/LetUsInfer",
+            "cwd": "${workspaceFolder}",
+            "MIMode":"lldb",
+            "miDebuggerPath":"/Users/nandhish/.vscode/extensions/ms-vscode.cpptools-1.32.2-darwin-arm64/debugAdapters/lldb-mi/bin/lldb-mi",
+            "preLaunchTask": "Clean Build Release"
+        },
     ]
 }

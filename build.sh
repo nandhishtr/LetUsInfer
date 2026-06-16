@@ -1,22 +1,28 @@
 #!/usr/bin/env bash
 
-if [ "$1" == "-c" ]; then
+PRESET="debug"
+
+if [[ "$1" == "--release" || "$2" == "--release" ]]; then
+    PRESET="release"
+fi 
+
+if [[ "$1" == "-c" || "$2" == "-c" ]]; then
     echo "Clean build in progress"
-    rm -rf build
-    echo " Clean done"
+    rm -rf build/${PRESET}
+    echo "Clean done"
 fi
 
-echo "Configuring build with CMake preset..."
-if cmake --preset debug; then
-    echo "Configuration successful."
+echo "Configuring build with CMake preset...${PRESET}"
+if cmake --preset ${PRESET}; then
+    echo "${PRESET} configuration successful."
 else
-    echo "Configuration failed. Aborting."
+    echo "${PRESET} configuration failed. Aborting."
     exit 1
 fi
 
 echo "Building project..."
-if cmake --build build/debug; then
-    echo "Build successful. Run with: ./build/debug/LetUsInfer"
+if cmake --build build/${PRESET}; then
+    echo "Build successful. Run with: ./build/${PRESET}/LetUsInfer"
 else
     echo "Build failed."
     exit 1
